@@ -9,16 +9,22 @@
 <body>
 !
     <header>
-        <h1>IPL 2026 Ticket Booking</h1>
+    <h1>IPL 2026 Ticket Booking</h1>
 
-        <nav>
-            <a href="#matches">Matches</a>
-            <a href="#booking">Book Ticket</a>
-            <a href="#mybookings">My Bookings</a>
-            <a href="#guidelines">Guidelines</a>
-            <a href="booking.html">Booking Form</a>
-        </nav>
-    </header>
+    <button id="menuToggle" class="menu-toggle"
+        type="button" aria-label="Toggle navigation"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="mainNav">
+        <a href="#matches">Matches</a>
+        <a href="#booking">Book Ticket</a>
+        <a href="#mybookings">My Bookings</a>
+        <a href="#guidelines">Guidelines</a>
+        <a href="booking.html">Booking Form</a>
+    </nav>
+</header>
     
     <section id="home">
         <h2>Experience The Stadium Energy Live!</h2>
@@ -81,55 +87,48 @@
             <option value="KKR">Kolkata Knight Riders</option>
         </select>
 
-        <table border="1" cellpadding="10">
-            <thead>
-                <tr>
-                    <th>Match Number</th>
-                    <th>Teams</th>
-                    <th>Date & Time</th>
-                    <th>Venue</th>
-                    <th>General</th>
-                    <th>Premium</th>
-                    <th>VIP</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        
+<!-- Activity 8: Responsive Match Cards -->
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>CSK vs MI</td>
-                    <td>01-04-2026, 7:30 PM</td>
-                    <td>Chennai</td>
-                    <td>₹1000</td>
-                    <td>₹2500</td>
-                    <td>₹5000</td>
-                    <td><a href="#booking">Book</a></td>
-                </tr>
+<div class="view-controls">
+    <button type="button" id="gridView">Grid View</button>
+    <button type="button" id="listView">List View</button>
+</div>
 
-                <tr>
-                    <td>2</td>
-                    <td>RCB vs KKR</td>
-                    <td>02-04-2026, 7:30 PM</td>
-                    <td>Bengaluru</td>
-                    <td>₹1200</td>
-                    <td>₹3000</td>
-                    <td>₹5500</td>
-                    <td><a href="#booking">Book</a></td>
-                </tr>
+<div id="matchContainer" class="match-grid">
 
-                <tr>
-                    <td>3</td>
-                    <td>MI vs RCB</td>
-                    <td>03-04-2026, 7:30 PM</td>
-                    <td>Mumbai</td>
-                    <td>₹1000</td>
-                    <td>₹2500</td>
-                    <td>₹5000</td>
-                    <td><a href="#booking">Book</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="match-card" data-teams="CSK MI">
+        <h3>Match 1: CSK vs MI</h3>
+        <p>Date & Time: 01-04-2026, 7:30 PM</p>
+        <p>Venue: Chennai</p>
+        <p>General: ₹1000</p>
+        <p>Premium: ₹2500</p>
+        <p>VIP: ₹5000</p>
+        <a href="#booking">Book Ticket</a>
+    </div>
+
+    <div class="match-card" data-teams="RCB KKR">
+        <h3>Match 2: RCB vs KKR</h3>
+        <p>Date & Time: 02-04-2026, 7:30 PM</p>
+        <p>Venue: Bengaluru</p>
+        <p>General: ₹1200</p>
+        <p>Premium: ₹3000</p>
+        <p>VIP: ₹5500</p>
+        <a href="#booking">Book Ticket</a>
+    </div>
+
+    <div class="match-card" data-teams="MI RCB">
+        <h3>Match 3: MI vs RCB</h3>
+        <p>Date & Time: 03-04-2026, 7:30 PM</p>
+        <p>Venue: Mumbai</p>
+        <p>General: ₹1000</p>
+        <p>Premium: ₹2500</p>
+        <p>VIP: ₹5000</p>
+        <a href="#booking">Book Ticket</a>
+    </div>
+
+</div>
+
     </section>
     
     <section id="booking">
@@ -282,27 +281,6 @@
 
 
     <script>
-        const teamFilter = document.getElementById("teamFilter");
-
-        teamFilter.addEventListener("change", function() {
-
-            const selectedTeam = this.value;
-
-            const rows = document.querySelectorAll("#matches tbody tr");
-
-            rows.forEach(function(row) {
-
-                const teams = row.cells[1].textContent;
-
-                if (selectedTeam === "all" || teams.includes(selectedTeam)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-
-            });
-
-        });
         
         // Booking Summary Calculation
 
